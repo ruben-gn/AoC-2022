@@ -14,7 +14,7 @@ class Day04 : Day(4) {
     override fun part1(input: String): Any =
         input.split("\n")
             .map(::toRanges)
-            .count { (one, other) -> one.contains(other) || other.contains(one) }
+            .count { (one, other) -> one.contains(other) or other.contains(one) }
 
     override fun part2(input: String): Any =
         input.split("\n")
