@@ -21,7 +21,7 @@ class Day04 : Day(4) {
             .map(::toRanges)
             .count { (one, other) -> one.overlaps(other) }
 
-    private infix fun IntRange.overlaps(other: IntRange): Boolean =
+    private fun IntRange.overlaps(other: IntRange): Boolean =
         other.any { this.contains(it) }
 
     private fun IntRange.contains(other: IntRange): Boolean =
