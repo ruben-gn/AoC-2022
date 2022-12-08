@@ -49,13 +49,7 @@ class Day08 : Day(8) {
     }
 
     private fun highest(trees: List<Tree>, tree: Tree, filter: Tree.(Tree) -> Boolean) =
-        relevantTrees(trees, filter, tree).all { tree.higherThan(it) }
-
-    private fun relevantTrees(
-        trees: List<Tree>,
-        filter: Tree.(Tree) -> Boolean,
-        tree: Tree
-    ) = trees.filter { it.filter(tree) }
+        trees.filter { it.filter(tree) }.all { tree.higherThan(it) }
 
     private fun parseGrid(grid: String) = grid.split("\n")
         .mapIndexed { index, line -> parseLine(index, line) }
