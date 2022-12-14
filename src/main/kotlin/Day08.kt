@@ -57,22 +57,22 @@ class Day08 : Day(8) {
     private fun parseLine(y: Int, line: String) = line.split("")
         .filter { it.isNotBlank() }
         .mapIndexed { x, value -> Tree(x, y, value.toInt()) }
-}
 
-private data class Tree(val x: Int, val y: Int, val value: Int) {
-    fun sameRow(other: Tree) = y == other.y
-    fun sameColumn(other: Tree) = x == other.x
-    fun leftOf(other: Tree) = x < other.x
-    fun rightOf(other: Tree) = x > other.x
-    fun above(other: Tree) = y < other.y
-    fun below(other: Tree) = y > other.y
+    private data class Tree(val x: Int, val y: Int, val value: Int) {
+        fun sameRow(other: Tree) = y == other.y
+        fun sameColumn(other: Tree) = x == other.x
+        fun leftOf(other: Tree) = x < other.x
+        fun rightOf(other: Tree) = x > other.x
+        fun above(other: Tree) = y < other.y
+        fun below(other: Tree) = y > other.y
 
-    fun directlyLeftOf(tree: Tree) = sameRow(tree) && leftOf(tree)
-    fun directlyRightOf(tree: Tree) = sameRow(tree) && rightOf(tree)
-    fun directlyAbove(tree: Tree) = sameColumn(tree) && above(tree)
-    fun directlyBelow(tree: Tree) = sameColumn(tree) && below(tree)
+        fun directlyLeftOf(tree: Tree) = sameRow(tree) && leftOf(tree)
+        fun directlyRightOf(tree: Tree) = sameRow(tree) && rightOf(tree)
+        fun directlyAbove(tree: Tree) = sameColumn(tree) && above(tree)
+        fun directlyBelow(tree: Tree) = sameColumn(tree) && below(tree)
 
-    fun higherThan(other: Tree) = value > other.value
+        fun higherThan(other: Tree) = value > other.value
+    }
 }
 
 
