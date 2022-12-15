@@ -89,25 +89,25 @@ class Day09 : Day(9) {
     private fun moveSegment(index: Int, segments: Array<Point>, segment: Point) {
         segments[index] = moveTail(segment, segments[index - 1])
     }
-}
 
-private data class Point(val x: Int, val y: Int)
-private data class Command(val direction: Direction, val distance: Int) {
-    enum class Direction {
-        R, U, L, D
-    }
-
-    companion object {
-        fun parse(input: String): Command = with(input.split(" ")) {
-            Command(Direction.valueOf(first()), last().toInt())
+    private data class Point(val x: Int, val y: Int)
+    private data class Command(val direction: Direction, val distance: Int) {
+        enum class Direction {
+            R, U, L, D
         }
-    }
 
-    fun moveFrom(x: Int, y: Int) =
-        when (direction) {
-            Direction.R -> (x + 1..x + distance).map { it to y }.map { Point(it.first, it.second) }
-            Direction.D -> (y + 1..y + distance).map { x to it }.map { Point(it.first, it.second) }
-            Direction.L -> (x - 1 downTo x - distance).map { it to y }.map { Point(it.first, it.second) }
-            Direction.U -> (y - 1 downTo y - distance).map { x to it }.map { Point(it.first, it.second) }
+        companion object {
+            fun parse(input: String): Command = with(input.split(" ")) {
+                Command(Direction.valueOf(first()), last().toInt())
+            }
         }
+
+        fun moveFrom(x: Int, y: Int) =
+            when (direction) {
+                Direction.R -> (x + 1..x + distance).map { it to y }.map { Point(it.first, it.second) }
+                Direction.D -> (y + 1..y + distance).map { x to it }.map { Point(it.first, it.second) }
+                Direction.L -> (x - 1 downTo x - distance).map { it to y }.map { Point(it.first, it.second) }
+                Direction.U -> (y - 1 downTo y - distance).map { x to it }.map { Point(it.first, it.second) }
+            }
+    }
 }
